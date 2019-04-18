@@ -1,0 +1,1 @@
+Created a shiny app that allows visualization some saving/investing scenarios considered in warmup 6. Includes input widgets for no annuity, annuity, and growth annuity and timeline plots as well as a data table displaying balances. Shiny web app link: https://workout02-melissa-ly.shinyapps.io/workout02/
