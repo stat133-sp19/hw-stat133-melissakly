@@ -1,0 +1,86 @@
+---
+title: "Getting started with the Binomial Package"
+author: "Melissa Ly"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to the Binomial Package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+  \usepackage[utf8]{inputenc}
+---
+```{r setup}
+devtools::document() 
+library(binomial)
+```
+
+```{r echo = FALSE, message= FALSE}
+knitr::opts_chunk$set(collapse = T, comment="#>")
+library(binomial)
+library(ggplot2)
+```
+
+## About the Binomial Distribution
+The Binomial distribution is perhaps the most famous probability distribution among discrete
+random variables. This is the theoretical probability model that we use when calculating
+probabilities about the number of successes in a fixed number of random trials performed
+under identical conditions (assuming a constant probability of success on each trial).
+
+## An Example
+
+A classic example of a binomial random variable X involves the number of Heads (or Tails)
+that you get when tossing a coin n ≥ 0 times. Say you are interested in finding the number of ways you could get 2 heads in 10 coin flips.
+```{r}
+bin_choose(n=10, k=2)
+```
+This function will calculates the number of combinations in which k successes can occur in n trials
+
+## Probablity of Success
+
+Say you are interested in finding the probability of getting three heads in four tosses of a fair coin: P(X = 3 heads in 4 tosses). To find the answer, we use the function for the binomial probability:
+```{r}
+bin_probability(success = 3, trials = 4, prob = 0.5)
+```
+
+
+## Views
+See a table of all the probabilities of success given the corresponding trials
+
+```{r}
+bin_distribution(trials = 5, prob = 0.5)
+```
+
+
+## Visualize Success
+
+Visualize your probablity of success through a bar plot!
+
+Plot a line graph of the table derived.
+```{r}
+plot(bin_distribution(trials = 5, prob = 0.5))
+```
+
+
+## Get Random!
+
+Create a binomial random variable givent the number of trials and chance of heads and find its summary statistics of the random variable
+```{r}
+bin_var <- bin_variable(trials=5, prob=0.5)
+bin_var
+
+summary(bin_var)
+```
+
+## Summary Statistics
+
+Calculate various individual statistics 
+
+```{r}
+bin_mean(5, 0.5)
+bin_variance(5, 0.5)
+bin_mode(5, 0.5)
+bin_skewness(5, 0.5)
+bin_kurtosis(5, 0.5)
+```
+
+And the outputs are the exact same as our previous calculations! These functions are extemely useful and help us compute crunch meaningful data so thanks for using this package!
